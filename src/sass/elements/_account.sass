@@ -1,0 +1,42 @@
+.account
+    position: absolute
+    top: 3rem
+    right: 0rem
+    display: flex
+    align-items: center
+    overflow: hidden
+    justify-content: space-between
+    cursor: pointer
+    transition: all .3s ease-in
+    &:hover
+        right: 3rem
+        .account__img
+            margin-right: 3rem
+            transform: translateX(0) rotate(360deg)
+        .account__name
+            transform: translateX(0)
+            opacity: 1
+    &__img
+        width: 6rem
+        height: 6rem
+        margin-right: .5rem
+        transition: all .6s ease-in-out
+        transform: translateX(8rem) rotate(0deg)
+        img
+            border-radius: 50%
+
+    &__name
+        max-width: 10rem
+        font-size: 1.5rem
+        text-align: center
+        margin-right: 1.5rem
+        transform: translateX(150%)
+        opacity: 0
+        transition: all .35s ease-in
+        transition-delay: .1s
+
+    &__buttons
+        display: flex
+        margin-top: .5rem
+        align-items: center
+        justify-content: center

@@ -1,0 +1,35 @@
+@include reset()
+
+*
+	box-sizing: border-box
+
+html
+	font-size: 10px
+	//font-family: 'Roboto', sans-serif
+	font-family: 'Arial', sans-serif
+
+.container
+	@include wrapper()
+
+.row-flex
+	@include row-flex()
+	justify-content: space-between
+
+.text-center
+	text-align: center
+
+body
+	overflow: hidden
+	/*background: #ec008c
+  	background: -webkit-linear-gradient(to right, #ec008c, #fc6767)
+  	background: linear-gradient(to right, #ec008c, #fc6767)*/
+
+button, button:active
+ 	outline: none
+
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	-webkit-appearance: none
+	margin: 0	
+input[type="number"]
+	-moz-appearance: textfield
