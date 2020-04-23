@@ -1,0 +1,69 @@
+@import '../../variables.sass' 
+    
+.add-item-modal
+    position: fixed
+    top: 50%   
+    left: 50%
+    display: flex
+    flex-flow: column
+    align-items: center
+    justify-content: center
+    width: 50rem
+    height: 30rem
+    padding: 2rem 4rem
+    background-color: #1e1f26
+    text-align: center
+    border-radius: 15px
+    transform: translate(-50%, -50%)
+    z-index: 950
+
+    &__header
+        margin: 0
+        padding: 0
+        font-size: 2.6rem
+        text-transform: uppercase
+        text-align: center
+
+    &__input
+        margin-top: 2rem
+        width: 80%
+        padding: 1rem 1rem
+        border: none
+        border-radius: 8px
+        outline: none
+        font-size: 1.4rem
+        transition: all .3s ease
+
+        &--error
+            color: $font-light
+            background-color: lighten($error-1, 12)
+
+    &__btn
+        margin-top: 2rem
+        padding: 1rem
+        width: 40%
+        font-size: 1.5rem
+        border: none
+        color: #fff
+        border-radius: 8px
+        background-color: $error-1
+        transition: all .3s ease
+        cursor: pointer
+        outline: none
+
+        &:hover
+            color: $error-1
+            background-color: #fff
+
+@media only screen and (max-width: $sm)
+    .add-item-modal__close-btn
+        left: -5rem
+
+@media only screen and (max-width: $xs)
+    .add-item-modal
+        height: 40rem
+        transform: translate(-50%, -50%)
+
+        &__close-btn
+            top: 8.5rem
+            left: 8rem

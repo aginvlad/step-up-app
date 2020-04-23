@@ -1,0 +1,146 @@
+@import '../../variables.sass'
+    
+.menu
+    &-burger
+        position: absolute
+        top: 5rem
+        left: 4rem
+        display: flex
+        align-items: center
+        justify-content: center
+        padding: 2rem
+        cursor: pointer
+        transition: all .65s ease
+        z-index: 900
+        span
+            position: relative
+            display: inline-block
+            width: 3.2rem
+            height: 3px
+            border-radius: 8px
+            background-color: #fff
+
+            &:before, &:after
+                content: ''
+                position: absolute
+                display: inline-block
+                width: 3.2rem
+                height: 3px
+                border-radius: 8px
+                background-color: #fffe
+
+            &:before
+                top: -.85rem
+
+            &:after
+                top: .85rem
+
+        &:hover
+            transform: scale(1.1)
+            span:before
+                animation: menuTopPart 2s cubic-bezier(.32,2,.55,.27) infinite 
+            span:after
+                animation: menuBottomPart 2s cubic-bezier(.32,2,.55,.27) infinite
+
+    &-sidebar
+        position: absolute
+        top: 0rem
+        left: 0
+        padding: 5rem 0rem
+        width: 32rem
+        height: 100vh
+        background-color: #fff
+        transform: translateX(-100%)
+        transition: all .35s ease
+        overflow-x: hidden
+        z-index: 1000
+        &--active
+            transform: translateX(0)
+        &__el
+            position: relative
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 100%
+            height: 7rem
+            cursor: pointer
+            transition: all .25s ease
+            &__title
+                transition: all .2s ease
+                color: $main-color
+                font-size: 2.2rem
+                font-weight: 300
+            &:hover
+                border-left: 1rem solid rgba($additional-1, 0.6)
+                border-top-right-radius: 8px
+                border-bottom-right-radius: 8px
+                background-color: #fff
+                box-shadow: 0 8px 16px rgba(0,0,0,0.15)
+                .menu-sidebar__el__title
+                    transform: scale(1.3)
+        &__close-btn
+            position: absolute
+            top: 2rem
+            right: 3.5rem
+            padding: 0.5rem 1.5rem
+            cursor: pointer
+            width: auto
+            color: $main-color
+            font-size: 2.2rem
+            transition: padding-right 1s ease
+            transform: translateX(0)
+            &:hover
+                color: #fff
+                border-radius: 30px
+                background-color: rgba($additional-1, 0.5)
+                padding-right: calc(100% - 9rem)
+        &__add-btn
+            position: relative
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 100%
+            height: 7rem
+            cursor: pointer
+            color: $main-color
+            font-size: 2rem
+            transition: all .2s ease
+            &:hover
+                color: $additional-1
+                background-color: rgba($additional-1, 0.1)
+
+            
+            
+            
+@keyframes menuTopPart
+    0%
+        transform: translateY(0)
+    50%
+        transform: translateY(-.35rem)
+    100%
+        transform: translateY(0rem)
+
+@keyframes menuBottomPart
+    0%
+        transform: translateY(0)
+    50%
+        transform: translateY(.35rem)
+    100%
+        transform: translateY(0rem)
+
+@media only screen and (max-width: $sm)
+    .menu
+        &-burger
+            left: 2rem
+        &-sidebar
+            width: 100%
+            height: 100vh
+
+@media only screen and (max-width: $xs)
+    .menu
+        &-burger
+            top: 1.8rem
+            left: 1rem
+        &-sidebar
+            width: 100%
+            height: 100vh

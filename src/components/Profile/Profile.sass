@@ -1,0 +1,119 @@
+@import '../../variables.sass'
+
+.profile
+    position: absolute
+    top: 2rem
+    right: 0
+    display: flex
+    padding: 3rem 0
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    overflow: hidden
+    transform: translateX(calc(100% - 12rem))
+    transition: all .65s ease
+    z-index: 900
+    
+    .wrapper
+        display: inline-block
+        width: 6.5rem
+        height: 6.5rem
+        margin-right: 3rem
+        transition: all .65s ease
+        img
+            width: 100%
+            height: 100%
+            border-radius: 50%
+            object-fit: cover
+
+    &-btn
+        margin-top: 0.25rem
+        padding: 0.25rem .5rem
+        font-size: 1.3rem
+        border-radius: 3px
+        outline: none
+        cursor: pointer
+        transition: all .28s ease 
+        &:hover
+            color: $font-light
+            background-color: transparent
+
+    &-signout-btn
+        padding: 0.25rem .3rem
+        margin-left: .5rem
+        color: $font-light
+        border: 1.2px solid $error-1
+        background-color: $error-1
+
+    &-user
+        display: flex
+        flex-flow: column
+        align-items: center
+        justify-content: center
+        max-width: 25rem
+        opacity: 0
+        transform: translateX(20rem)
+        visibility: hidden
+        transition: transform .5s ease opacity .5s ease
+        &-name
+            font-size: 1.8rem
+            color: $font-light
+            text-align: center
+        &-btn
+            border: 1.2px solid $font-light
+            background-color: $font-light
+
+    &:hover
+        transform: translateX(0)
+        .wrapper
+            transform: rotate(-360deg) 
+        .profile-user
+            padding-right: 5rem
+            visibility: visible
+            overflow: hidden
+            opacity: 1   
+            transform: translateX(0rem)
+
+.user-settings-icon
+
+    
+@media only screen and (max-width: $sm)
+    .profile
+        position: absolute
+        top: 1rem
+        transform: translateX(0rem) scale(0.8)
+        &-user
+            display: none
+            max-width: 20rem
+            transform: translateX(0rem)
+        &:hover
+            transform: translateX(2rem) scale(0.8)
+            .profile-user
+                display: flex
+                padding-right: 2rem
+                animation: user .5s ease
+
+@media only screen and (max-width: $xs)
+    .profile
+        position: absolute
+        top: -2rem
+        //right: -2.5rem
+        transform: translateX(0rem) scale(0.8)
+        &-user
+            display: none
+            max-width: 20rem
+            transform: translateX(0rem)
+        &:hover
+            transform: translateX(2rem) scale(0.8)
+            .profile-user
+                display: flex
+                padding-right: 2rem
+                animation: user .5s ease
+
+@keyframes user
+    0%
+        opacity: 0
+        transform: translateX(100%)
+    100%
+        opacity: 1
+        transform: translateX(0)

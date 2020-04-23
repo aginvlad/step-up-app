@@ -1,0 +1,308 @@
+@import '../../variables.sass'
+    
+.planet
+    position: absolute
+    top: -3.5rem
+    left: 50%
+    display: block
+    margin: 0 auto
+    width: 10rem
+    transform: translateX(-50%) scale(0.1)
+    transition: all 3s ease
+    img
+        overflow: hidden
+        animation: planet 240s linear infinite
+.rocket
+    position: absolute
+    top: 50%
+    left: 50%
+    display: flex
+    flex-flow: column
+    align-items: center
+    transform: translate(-50%, -50%)
+
+    &-interface
+        position: relative
+        &__logo
+            width: 28rem
+            img
+                width: 100%
+        &__logo--fly
+            animation: rocketFly 8s ease !important
+            animation-fill-mode: forwards !important
+        &__logo--on-the-way
+            height: 22rem
+            animation: rocketVibration 5s linear infinite
+        &__logo--completed
+            position: relative
+            display: flex
+            width: 50rem
+            justify-content: center
+            align-items: center
+            img:nth-child(1)
+                transform: scale(0.6)
+                margin-right: -5rem
+            hr
+                border: none
+                border-top: 8px dashed #fff
+                background-color: transparent
+                height: 1px
+                width: 100%
+            .rocket-interface__logo__complete-label, .rocket-interface__logo__complete-sublable
+                left: 50%
+                opacity: 1
+                visibility: visibile
+                transform: translateX(calc(-50% - .8rem))
+            .rocket-interface__logo__complete-label, 
+                top: 2rem
+            .rocket-interface__logo__complete-sublable
+                top: 8.5rem
+                font-size: 2.5rem
+                color: $additional-1
+            .planet-on-complete
+                margin-left: -3rem
+                transform: scale(0.6)
+            
+        &__fuel
+            position: absolute
+            top: 0%
+            right: -20rem
+            img
+                width: 100%
+                height: 100%
+
+        &__flag-road
+            position: relative
+            display: block
+            width: 28rem
+            height: 6px
+            background: #fff
+            border-radius: 5px
+
+            &__completed
+                position: absolute
+                top: 0
+                left: 0
+                width: 0%
+                height: 6px
+                background: $additional-2
+                border-radius: 5px
+                transition: width .5s ease 
+
+            &__completed-label
+                position: absolute
+                top: -7rem
+                left: 50%
+                opacity: 0
+                visibility: none
+                font-size: 3rem
+                color: $additional-2
+                text-transform: uppercase
+                transform: translateX(-50%)
+                transition: all .3s ease
+            
+            &__human
+                position: absolute
+                top: -5.4rem
+                left: calc(0% - 3rem)
+                font-size: 6rem
+                transition: all .5s ease
+                z-index: 100
+            &__flag
+                position: absolute
+                top: -5rem            
+                right: -3.5rem
+                font-size: 4rem
+                color: $additional-2
+                transition: all .3s ease
+                
+    
+    &-statistics
+        display: flex
+        flex-flow: column
+        align-items: center
+        font-size: 2rem
+        &__label, &__fuel-label
+            display: block
+            margin-top: 3rem
+            margin-bottom: 1rem
+            padding: 0
+            font-size: 3.2rem
+            text-transform: uppercase
+            font-weight: 300
+            cursor: pointer
+            text-align: center
+        &__label
+            width: 30rem
+        &__fuel-label
+            position: absolute
+            right: -20.5rem
+
+        &__steps
+            position: relative
+            &__amount
+                font-size: 4.2rem
+                font-weight: 300
+
+
+    &-control
+        position: relative
+        margin-top: 2rem
+        margin-bottom: 2rem
+        &__add-btn, 
+        &__edit-btn,
+        &__save-btn,
+        &__remove-btn,
+        &__reset-btn
+            display: block
+            padding: .5rem
+            width: 18rem
+            margin-bottom: 1rem
+            font-size: 1.6rem
+            color: $font-light
+            background-color: transparent
+            text-transform: uppercase
+            border: 1.8px solid $font-light
+            border-radius: 10px
+            cursor: pointer
+            outline: none
+            transition: all .3s ease
+
+            &:hover
+                transform: scale(1.2)
+                box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)
+        &__edit-btn,
+        &__save-btn
+            width: 9rem
+        &__add-btn
+            &:hover
+                background-color: $additional-1
+        &__edit-btn
+            &:hover
+                background-color: $additional-4
+        &__save-btn
+            &:hover
+                background-color: $additional-2
+        &__remove-btn
+            &:hover
+                background-color: $additional-3
+        &__reset-btn
+            &:hover
+                background-color: $error-1
+        &__back-btn
+            position: absolute
+            top: 50%
+            left: -8rem
+            font-size: 3.2rem
+            color: $font-dark-2
+            transform: translateY(-50%)
+            transition: all .3s ease
+            cursor: pointer
+
+            &:hover
+                color: $font-light
+
+@keyframes goal
+    0%
+        letter-spacing: 0
+    50%
+        letter-spacing: 8px
+    100%   
+        letter-spacing: 0
+@keyframes rocketVibration
+    0%
+        transform: scale(0.5) rotate(0deg)
+    33%
+        transform: scale(0.5) rotate(-2deg)
+    66%
+        transform: scale(0.5) rotate(2deg)
+    100%
+        transform: scale(0.5) rotate(0deg)
+@keyframes rocketVibrationTakeOff
+    0%
+        transform: rotate(0deg)
+    33%
+        transform: rotate(-1deg)
+    66%
+        transform: rotate(1deg)
+    100%
+        transform: rotate(0deg)
+@keyframes rocketFly
+    0%
+        transform: translateY(0)
+    100%
+        transform: translateY(-60rem)
+@keyframes planet
+    0%
+        -webkit-transform-origin: 50%  51%
+        transform: rotate(0) scale(0.99) translatez(0)
+    100%
+        -webkit-transform-origin: 50%  51%
+        transform: rotate(360deg) scale(0.99) translatez(0)
+
+@media only screen and (max-width: $lg)
+    .rocket-interface__fuel
+        right: -12rem
+    .rocket-statistics__fuel-label
+        right: -12.5rem
+
+@media only screen and (max-width: $md)
+    .rocket-interface__fuel
+        right: -8rem
+    .rocket-statistics__fuel-label
+        right: -8.5rem
+
+@media only screen and (max-width: $sm)
+    .rocket
+        top: 58%
+
+@media only screen and (max-width: $xs)
+    .rocket-statistics__label
+        font-size: 2.5rem
+    .rocket
+        top: 58%
+        &-interface
+            position: static
+            display: block
+            width: 20rem !important
+            text-align: center
+            &__logo
+                position: relative
+                margin-top: 3rem
+                width: 28rem
+                img
+                    width: 100%
+            &__logo--on-the-way
+                left: -3.5rem
+            &__logo--completed
+                width: 50rem
+                transform: translateX(-30%) scale(0.72)
+                margin-bottom: -5rem
+            &__flag-road
+                position: relative
+                display: block
+                width: 28rem
+                height: 6px
+                background: #fff
+                border-radius: 5px
+                transform: translateX(-15%) scale(0.8)
+            &__fuel
+                position: relative
+                left: 0
+                text-align: center
+        &-control
+            &__back-btn
+                left: -6.5rem
+
+    .tube--empty
+        position: relative
+        width: 50px !important
+        height: 280px
+        display: inline-block
+
+    .gauge-container
+        position: static !important
+        right: 0
+        transform: translate(-1.5rem, 0) scale(0.7) !important
+        .drive
+            margin: 0 !important

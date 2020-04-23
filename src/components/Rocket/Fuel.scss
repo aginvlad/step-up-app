@@ -1,0 +1,88 @@
+@import '../../variables';
+
+$color-liquid: #a55eea;
+
+@mixin keyframes($animate-name) {
+	@-webkit-keyframes #{$animate-name} { @content; }
+	@keyframes #{$animate-name} { @content;}
+}
+
+@mixin animate($name, $time : 0.1s) {
+	-webkit-animation: $name $time linear infinite;
+			animation: $name $time linear infinite;
+}
+
+@mixin frames($initial-bottom : 90%, $final-bottom: 100%) {
+	0% { opacity: 0; bottom: $initial-bottom; }
+	25% { opacity: 0.25; }
+	50% { opacity: 0.50; }
+	75% { opacity: 0.75; }
+	90% { opacity: 0.50; }
+	100% { opacity: 0; bottom: $final-bottom; transform: scale(1.1); }
+}
+
+.tube {
+	position: absolute;
+	top: 0;
+	left: -1px;
+	width: 50px;
+	height: 280px;
+	border: 1px solid rgba($font-light, 0.3);
+	border-top: none;
+  	background-repeat: repeat-x;
+	background-size: 100%;
+	//background-image: linear-gradient(to bottom, rgba(0,0,0,0) 20%, $color-liquid 20%), url('../../assets/Space/tube.png');
+	//background: linear-gradient(to top, $color-liquid 0%, #1e1f26 0%);
+	box-shadow: inset 0 -2px 0 rgba(0,0,0,0.1);
+	border-radius: 0 0 25px 25px;
+	//transform: translateY(300px);
+	z-index: 10;
+
+	@include animate(animate-wave, 0.8s);
+}
+
+.tube--empty {
+	position: relative;
+	width: 50px;
+	height: 280px;
+	border: 1px solid rgba($font-light, 0.3);
+	border-top: none;
+	background-color: #1e1f26;
+	box-shadow: inset 0 -2px 0 rgba(0,0,0,0.1);
+	border-radius: 0 0 25px 25px;
+	overflow: hidden;
+}
+
+.bubbles-top {
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	border: 1px solid rgba(0,0,0,0.05);
+	background-color: rgba($color-liquid, 0.3);
+
+	border-radius: 100%;
+
+	box-shadow: inset 0 1px rgba($color-liquid,0.35);
+}
+
+.bubbles-top:first-child { left: 20px; @include animate(animate-bubble1, 1.5s); }
+.bubbles-top:nth-child(2) { left: 30px; @include animate(animate-bubble2, 0.8s); }
+.bubbles-top:nth-child(3) { left: 15px; @include animate(animate-bubble3, 1.6s); }
+.bubbles-top:nth-child(4) { left: 13px; @include animate(animate-bubble4, 1s); }
+.bubbles-top:last-child { left: 10px; @include animate(animate-bubble5, 1.3s); }
+
+@include keyframes(animate-bubble1) { @include frames(90%, 100%); }
+
+@include keyframes(animate-bubble2) { @include frames(90%, 103%); }
+
+@include keyframes(animate-bubble3) { @include frames(90%, 105%); }
+
+@include keyframes(animate-bubble4) { @include frames(90%, 107%); }
+
+@include keyframes(animate-bubble5) { @include frames(90%, 104%); }
+
+@include keyframes(animate-wave) {
+	0% { background-position: 0 20px; }
+	50% { background-position: 25px 25px; }
+	100% { background-position: 50px 20px; }
+}

@@ -1,0 +1,42 @@
+@import '../../variables.sass' 
+
+.add-first-goal-btn
+    position: absolute
+    top: 50%
+    left: 50%
+    padding: 2rem
+    font-size: 2.6rem
+    border: 3px dashed $additional-1
+    border-radius: 12px
+    background-color: transparent
+    color: $additional-1
+    transform: translate(-50%, -50%) rotate(0deg)
+    transition: all .5s ease
+    animation: tada 4s infinite
+    animation-delay: .5s
+    cursor: pointer
+    outline: none
+
+    &:hover
+        color: #fff
+        border-color: #fff
+        animation: none
+        transform: translate(-50%, -50%) rotate(-3deg)
+
+@keyframes tada  
+  10%,
+  15%,
+  25%,
+  35%,
+  45% 
+    -webkit-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg) rotate(0deg)
+    transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg) rotate(0deg) 
+  20%,
+  30%,
+  40% 
+    -webkit-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg) rotate(0deg)
+    transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg) rotate(0deg)
+  50% 
+    -webkit-transform: translate(-50%, -50%) scale3d(1, 1, 1) rotate(0deg)
+    transform: translate(-50%, -50%) scale3d(1, 1, 1) rotate(0deg)
+
